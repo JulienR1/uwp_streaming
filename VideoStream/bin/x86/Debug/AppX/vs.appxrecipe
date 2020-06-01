@@ -30,21 +30,29 @@
     <AppXManifest Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-06-01T18:10:37.531</Modified>
+      <Modified>2020-06-01T19:43:48.742</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\VideoStream.exe">
       <PackagePath>entrypoint\VideoStream.exe</PackagePath>
-      <Modified>2020-06-01T18:08:55.364</Modified>
+      <Modified>2020-06-01T19:43:48.032</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
       <Modified>2020-02-27T23:16:04.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\JulienR\.nuget\packages\system.drawing.common\4.7.0\lib\netstandard2.0\System.Drawing.Common.dll">
+      <PackagePath>System.Drawing.Common.dll</PackagePath>
+      <Modified>2018-09-18T23:38:14.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.18362.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
       <Modified>2019-03-18T22:36:56.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\Assets\imgToSend.jpg">
+      <PackagePath>Assets\imgToSend.jpg</PackagePath>
+      <Modified>2020-06-01T18:40:46.151</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
@@ -86,23 +94,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\VideoStream.xr.xml">
       <PackagePath>VideoStream.xr.xml</PackagePath>
-      <Modified>2020-06-01T18:01:39.779</Modified>
+      <Modified>2020-06-01T19:43:47.746</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-06-01T18:08:55.095</Modified>
+      <Modified>2020-06-01T19:43:47.757</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\Client.xbf">
       <PackagePath>Client.xbf</PackagePath>
-      <Modified>2020-06-01T18:08:55.096</Modified>
+      <Modified>2020-06-01T19:43:47.758</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-06-01T18:08:55.096</Modified>
+      <Modified>2020-06-01T19:43:47.758</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\Server.xbf">
       <PackagePath>Server.xbf</PackagePath>
-      <Modified>2020-06-01T18:08:55.096</Modified>
+      <Modified>2020-06-01T19:43:47.758</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -110,11 +118,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-06-01T18:10:36.861</Modified>
+      <Modified>2020-06-01T19:33:58.639</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\Core\VideoStream.exe">
       <PackagePath>VideoStream.exe</PackagePath>
-      <Modified>2020-06-01T18:10:37.525</Modified>
+      <Modified>2020-06-01T19:43:48.736</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

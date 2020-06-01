@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Drawing;
 using System.Net.Sockets;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
@@ -15,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Media.Playback;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -42,11 +44,25 @@ namespace VideoStream
                 TcpClient client = new TcpClient();
                 client.Connect(ip, port);
 
+                print("Encoding message");
                 Byte[] data = System.Text.Encoding.ASCII.GetBytes("Hello world");
 
                 NetworkStream stream = client.GetStream();
                 stream.Write(data, 0, data.Length);
                 print("Sent message");
+
+                print("Encoding image");
+                Bitmap img = new Bitmap("Assets/imgToSend.jpg");
+                MemoryStream ms = new MemoryStream();
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                Byte[] imgBytes = ms.GetBuffer();
+                img.Dispose();
+                ms.Close();
+
+                print("Sending image");
+                SendVarData(client.Client, imgBytes);
+                print("Image sent");
+
 
                 stream.Close();
                 client.Close();
@@ -59,6 +75,26 @@ namespace VideoStream
             {
                 print("Socket Exception: " + e);
             }
+        }
+
+        private static int SendVarData(Socket s, byte[] data)
+        {
+            int total = 0;
+            int size = data.Length;
+            int dataleft = size;
+            int sent;
+
+            byte[] datasize = new byte[4];
+            datasize = BitConverter.GetBytes(size);
+            sent = s.Send(datasize);
+
+            while (total < size)
+            {
+                sent = s.Send(data, total, dataleft, SocketFlags.None);
+                total += sent;
+                dataleft -= sent;
+            }
+            return total;
         }
 
         private async void print(string s)

@@ -14,11 +14,18 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
         <StackPanel Grid.Row="0">
             <TextBox Name="ipAddress" Margin="20" FontSize="16"/>
             <Button Content="Start server" Click="Button_Click"/>
         </StackPanel>
         
         <TextBlock x:Name="feedbackText" FontSize="20" Margin="20" Grid.Row="1"/>
+
+        <Image Grid.Column="1" Grid.RowSpan="2" Name="imgRender"/>
     </Grid>
 </Page>

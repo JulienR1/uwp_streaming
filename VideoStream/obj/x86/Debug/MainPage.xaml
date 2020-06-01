@@ -12,20 +12,22 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="400"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
         <StackPanel HorizontalAlignment="Center" Grid.Row="0">
-            <Button x:ConnectionId='5' Content="Start camera" FontSize="30"                      HorizontalAlignment="Center"/>
-            <TextBlock x:ConnectionId='6' x:Name="feedback" Text="feedback" FontSize="30" HorizontalAlignment="Center"/>
+            <Button x:ConnectionId='6' Content="Start camera" FontSize="30"                      HorizontalAlignment="Center"/>
+            <TextBlock x:ConnectionId='7' x:Name="feedback" Text="feedback" FontSize="30" HorizontalAlignment="Center"/>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Grid.Row="1" Orientation="Horizontal">
-            <Button x:ConnectionId='3' x:Name="btnServer" Content="Server" FontSize="30" Padding="20" Margin="10"                        />
-            <Button x:ConnectionId='4' x:Name="btnClient" Content="Client" FontSize="30" Padding="20" Margin="10"                        />
+            <Button x:ConnectionId='4' x:Name="btnServer" Content="Server" FontSize="30" Padding="20" Margin="10"                        />
+            <Button x:ConnectionId='5' x:Name="btnClient" Content="Client" FontSize="30" Padding="20" Margin="10"                        />
         </StackPanel>
 
 
-        <CaptureElement x:ConnectionId='2' Name="webcamPreview" Stretch="Uniform"/>
+        <CaptureElement x:ConnectionId='2' Name="webcamPreview" Stretch="Uniform" Grid.Row="1"/>
+        <Image x:ConnectionId='3' x:Name="screenshotPreview" Stretch="Uniform" Grid.Row="2"/>
     </Grid>
 </Page>
 

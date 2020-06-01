@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="400"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
         <StackPanel HorizontalAlignment="Center" Grid.Row="0">
@@ -25,6 +26,7 @@
         </StackPanel>
 
 
-        <CaptureElement Name="webcamPreview" Stretch="Uniform"/>
+        <CaptureElement Name="webcamPreview" Stretch="Uniform" Grid.Row="1"/>
+        <Image x:Name="screenshotPreview" Stretch="Uniform" Grid.Row="2"/>
     </Grid>
 </Page>

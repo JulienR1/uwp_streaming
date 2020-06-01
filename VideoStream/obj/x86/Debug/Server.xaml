@@ -14,12 +14,19 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
         <StackPanel Grid.Row="0">
-            <TextBox x:ConnectionId='3' Name="ipAddress" Margin="20" FontSize="16"/>
-            <Button x:ConnectionId='4' Content="Start server"                     />
+            <TextBox x:ConnectionId='4' Name="ipAddress" Margin="20" FontSize="16"/>
+            <Button x:ConnectionId='5' Content="Start server"                     />
         </StackPanel>
         
         <TextBlock x:ConnectionId='2' x:Name="feedbackText" FontSize="20" Margin="20" Grid.Row="1"/>
+
+        <Image x:ConnectionId='3' Grid.Column="1" Grid.RowSpan="2" Name="imgRender"/>
     </Grid>
 </Page>
 

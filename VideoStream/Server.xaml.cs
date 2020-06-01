@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using System.Drawing;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -53,20 +54,27 @@ namespace VideoStream
                 while (true)
                 {
                     print("Waiting for connection");
-                    //Socket client = server.AcceptSocket(); //server.AcceptTcpClient();
                     TcpClient client = server.AcceptTcpClient();
                     print("Connected!");
 
                     data = null;
 
-                    NetworkStream stream = client.GetStream();// new NetworkStream(client);// client.GetStream();
+                    NetworkStream stream = client.GetStream();
 
                     int i;
                     while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                     {
                         data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
                         print("Received: " + data);
-                    }                
+                    }
+
+                    byte[] imgBytes = new byte[1024];
+                    client.Close();
+                    client = server.AcceptTcpClient();
+                    imgBytes = ReceiveVarData(client.Client);
+                    MemoryStream ms = new MemoryStream(imgBytes);
+                    System.Drawing.Image bmp = System.Drawing.Image.FromStream(ms);
+                    print("Received image");
                 }
             }
             catch (SocketException e)
@@ -78,6 +86,31 @@ namespace VideoStream
                 server.Stop();
             }
             print("Server closed");
+        }
+
+        private static byte[] ReceiveVarData(Socket s)
+        {
+            int total = 0;
+            int recv;
+            byte[] datasize = new byte[4];
+
+            recv = s.Receive(datasize, 0, 4, 0);
+            int size = BitConverter.ToInt32(datasize, 0);
+            int dataleft = size;
+            byte[] data = new byte[size];
+
+
+            while (total < size)
+            {
+                recv = s.Receive(data, total, dataleft, 0);
+                if (recv == 0)
+                {
+                    break;
+                }
+                total += recv;
+                dataleft -= recv;
+            }
+            return data;
         }
 
         private async void GetIp()

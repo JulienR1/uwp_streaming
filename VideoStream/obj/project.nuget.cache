@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IizKPmiBpb22ddTo3Iv6ldhT4wzHvcui7UBKr6BnJBj3GRcnT1FOQ9t9vDczr7W8wFCqRC+PqsnQaZ9TwMOh7Q==",
+  "dgSpecHash": "ofu4liCSvLAjWiZWwsmYUbJ9ePtRUGdmKrG1ki4B50JkpT6lqe7mnrbAJvgEdgV2lnjJniTiVDtNSdc1H8liZg==",
   "success": true,
   "projectFilePath": "D:\\dev\\uwp\\uwp_streaming\\VideoStream\\VideoStream.csproj",
   "expectedPackageFiles": [
@@ -26,7 +26,8 @@
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\runtime.win10-x86.microsoft.net.native.compiler\\2.2.8-rel-28605-00\\runtime.win10-x86.microsoft.net.native.compiler.2.2.8-rel-28605-00.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\runtime.win10-x86.microsoft.net.native.sharedlibrary\\2.2.7-rel-28605-00\\runtime.win10-x86.microsoft.net.native.sharedlibrary.2.2.7-rel-28605-00.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\\2.2.10\\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk.2.2.10.nupkg.sha512",
-    "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\\6.2.10\\runtime.win10-x86.microsoft.netcore.universalwindowsplatform.6.2.10.nupkg.sha512"
+    "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\\6.2.10\\runtime.win10-x86.microsoft.netcore.universalwindowsplatform.6.2.10.nupkg.sha512",
+    "C:\\Users\\JulienR\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

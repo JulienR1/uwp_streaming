@@ -9,7 +9,10 @@ using Windows.Devices.Enumeration;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
+using Windows.Graphics.Imaging;
+using Windows.Media;
 using Windows.Media.Capture;
+using Windows.Media.MediaProperties;
 using Windows.System.Display;
 using Windows.UI.Core;
 using Windows.UI.WindowManagement;
@@ -86,9 +89,13 @@ namespace VideoStream
 
             try
             {
-                webcamPreview.Source = mediaCapture;
+                webcamPreview.Source = mediaCapture;                
                 await mediaCapture.StartPreviewAsync();
                 isPreviewing = true;
+
+                VideoEncodingProperties previewProperties = mediaCapture.VideoDeviceController.GetMediaStreamProperties(MediaStreamType.VideoPreview) as VideoEncodingProperties;
+                VideoFrame videoFrame = new VideoFrame(BitmapPixelFormat.Bgra8, (int)previewProperties.Width, (int)previewProperties.Height);
+                VideoFrame previewFrame = await mediaCapture.GetPreviewFrameAsync(videoFrame);
             }
             catch (System.IO.FileLoadException)
             {

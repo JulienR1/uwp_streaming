@@ -13,12 +13,20 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Vertical">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
             <TextBox x:ConnectionId='3' x:Name="ipAddress" FontSize="16" Margin="20"/>
             <Button x:ConnectionId='4' Content="Start client"                      Margin="20"/>
         </StackPanel>
 
-        <TextBlock x:ConnectionId='2' x:Name="feedbackText" FontSize="20" Margin="20" Grid.Row="1"/>
+        <TextBlock x:ConnectionId='2' x:Name="feedbackText" FontSize="20" Margin="20" Grid.Row="1" Grid.Column="0"/>
+
+        <TextBlock Text="Target to send: " Grid.Row="0" Grid.Column="1" FontSize="16" VerticalAlignment="Bottom"/>
+        <Image Grid.Column="1" Grid.Row="1" Source="Assets/imgToSend.jpg"/>
     </Grid>
 </Page>
 

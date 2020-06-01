@@ -117,3 +117,8 @@ D:\dev\uwp\uwp_streaming\VideoStream\obj\x86\Debug\qualifiers.txt.intermediate
 D:\dev\uwp\uwp_streaming\VideoStream\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 D:\dev\uwp\uwp_streaming\VideoStream\obj\x86\Debug\ProjectArchitectures.txt
 D:\dev\uwp\uwp_streaming\VideoStream\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885454160000000.json
+D:\dev\uwp\uwp_streaming\VideoStream\obj\x86\Debug\VideoStream.csprojAssemblyReference.cache
+D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\System.Drawing.Common.dll
+D:\dev\uwp\uwp_streaming\VideoStream\obj\x86\Debug\FxResources.System.Drawing.Common.SR.resw
+D:\dev\uwp\uwp_streaming\VideoStream\obj\x86\Debug\resources.en-us.resfiles
+D:\dev\uwp\uwp_streaming\VideoStream\obj\x86\Debug\resources.en-us.resfiles.intermediate
