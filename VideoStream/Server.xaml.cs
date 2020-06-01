@@ -53,20 +53,20 @@ namespace VideoStream
                 while (true)
                 {
                     print("Waiting for connection");
-                    Socket client = server.AcceptSocket(); //server.AcceptTcpClient();
+                    //Socket client = server.AcceptSocket(); //server.AcceptTcpClient();
+                    TcpClient client = server.AcceptTcpClient();
                     print("Connected!");
 
                     data = null;
 
-                    NetworkStream stream = new NetworkStream(client);// client.GetStream();
+                    NetworkStream stream = client.GetStream();// new NetworkStream(client);// client.GetStream();
 
                     int i;
                     while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                     {
                         data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
                         print("Received: " + data);
-                    }
-                    client.Close();
+                    }                
                 }
             }
             catch (SocketException e)
