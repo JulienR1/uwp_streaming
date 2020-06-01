@@ -12,7 +12,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="400"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
         <StackPanel HorizontalAlignment="Center" Grid.Row="0">
@@ -25,10 +24,6 @@
             <Button x:Name="btnClient" Content="Client" FontSize="30" Padding="20" Margin="10" Click="btnClient_Click"/>
         </StackPanel>
 
-        <StackPanel HorizontalAlignment="Center" Grid.Row="2" Orientation="Horizontal">
-            <Button x:Name="btnSocketServer" Content="Socket server" FontSize="30" Padding="20" Margin="10" Click="btnSocketServer_Click"/>
-            <Button x:Name="btnSocketClient" Content="Socket client" FontSize="30" Padding="20" Margin="10" Click="btnSocketClient_Click"/>
-        </StackPanel>
 
         <CaptureElement Name="webcamPreview" Stretch="Uniform"/>
     </Grid>

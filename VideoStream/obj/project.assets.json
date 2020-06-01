@@ -8157,11 +8157,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\dev\\uwp\\videostream\\VideoStream\\VideoStream.csproj",
+      "projectUniqueName": "D:\\dev\\uwp\\uwp_streaming\\VideoStream\\VideoStream.csproj",
       "projectName": "VideoStream",
-      "projectPath": "D:\\dev\\uwp\\videostream\\VideoStream\\VideoStream.csproj",
+      "projectPath": "D:\\dev\\uwp\\uwp_streaming\\VideoStream\\VideoStream.csproj",
       "packagesPath": "C:\\Users\\JulienR\\.nuget\\packages\\",
-      "outputPath": "D:\\dev\\uwp\\videostream\\VideoStream\\obj\\",
+      "outputPath": "D:\\dev\\uwp\\uwp_streaming\\VideoStream\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

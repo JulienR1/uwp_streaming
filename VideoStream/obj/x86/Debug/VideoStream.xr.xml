@@ -47,7 +47,5 @@
     </RootType>
     <RootType FullName="VideoStream.MainPage" />
     <RootType FullName="VideoStream.Server" />
-    <RootType FullName="VideoStream.SocketClient" />
-    <RootType FullName="VideoStream.SocketServer" />
   </Roots.RootTypes>
 </Roots>

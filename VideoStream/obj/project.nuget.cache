@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5W1e9hoR0ryLs8wWiHWEll8MjVFzAySJlxDguLX+5dBIKr6CmItT6HUx6YiRr0AuIYHPzUEa+nCnT2L5puYcdQ==",
+  "dgSpecHash": "IizKPmiBpb22ddTo3Iv6ldhT4wzHvcui7UBKr6BnJBj3GRcnT1FOQ9t9vDczr7W8wFCqRC+PqsnQaZ9TwMOh7Q==",
   "success": true,
-  "projectFilePath": "D:\\dev\\uwp\\videostream\\VideoStream\\VideoStream.csproj",
+  "projectFilePath": "D:\\dev\\uwp\\uwp_streaming\\VideoStream\\VideoStream.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.net.native.compiler\\2.2.8-rel-28605-00\\microsoft.net.native.compiler.2.2.8-rel-28605-00.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.net.uwpcoreruntimesdk\\2.2.10\\microsoft.net.uwpcoreruntimesdk.2.2.10.nupkg.sha512",

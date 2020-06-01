@@ -154,16 +154,6 @@ namespace VideoStream
             OpenNewWindow(typeof(Client));
         }
 
-        private void btnSocketServer_Click(object sender, RoutedEventArgs e)
-        {
-            OpenNewWindow(typeof(SocketServer));
-        }
-
-        private void btnSocketClient_Click(object sender, RoutedEventArgs e)
-        {
-            OpenNewWindow(typeof(SocketClient));
-        }
-
         private async void OpenNewWindow(Type pageToOpen)
         {
             AppWindow window = await AppWindow.TryCreateAsync();

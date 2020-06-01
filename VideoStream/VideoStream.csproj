@@ -129,12 +129,6 @@
     <Compile Include="Server.xaml.cs">
       <DependentUpon>Server.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SocketClient.xaml.cs">
-      <DependentUpon>SocketClient.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SocketServer.xaml.cs">
-      <DependentUpon>SocketServer.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -165,14 +159,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Server.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SocketClient.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SocketServer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -10,7 +10,5 @@ App.xbf
 Client.xbf
 MainPage.xbf
 Server.xbf
-SocketClient.xbf
-SocketServer.xbf
 VideoStream.xr.xml
 Properties\Default.rd.xml
