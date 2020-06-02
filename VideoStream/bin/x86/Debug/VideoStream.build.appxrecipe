@@ -85,6 +85,9 @@
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\Server.xbf">
       <PackagePath>Server.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\WebcamFrames.xbf">
+      <PackagePath>WebcamFrames.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>

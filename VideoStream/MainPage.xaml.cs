@@ -12,7 +12,9 @@ using Windows.Graphics.Display;
 using Windows.Graphics.Imaging;
 using Windows.Media;
 using Windows.Media.Capture;
+using Windows.Media.Capture.Frames;
 using Windows.Media.MediaProperties;
+using Windows.Storage.Streams;
 using Windows.System.Display;
 using Windows.UI.Core;
 using Windows.UI.WindowManagement;
@@ -161,6 +163,11 @@ namespace VideoStream
             OpenNewWindow(typeof(Client));
         }
 
+        private void btnCameraFrames_Click(object sender, RoutedEventArgs e)
+        {
+            OpenNewWindow(typeof(WebcamFrames));
+        }
+
         private async void OpenNewWindow(Type pageToOpen)
         {
             AppWindow window = await AppWindow.TryCreateAsync();
@@ -174,6 +181,6 @@ namespace VideoStream
                 frame.Content = null;
                 window = null;
             };
-        }
+        }        
     }
 }

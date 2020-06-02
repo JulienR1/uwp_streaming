@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -22,6 +23,11 @@ namespace VideoStream
     /// </summary>
     sealed partial class App : Application
     {
+        public const int BUFFER_SIZE = 512;
+
+        public static IPAddress serverIP = IPAddress.Parse("127.0.0.1");
+        public static int port = 5050;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().

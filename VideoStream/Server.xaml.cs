@@ -48,7 +48,7 @@ namespace VideoStream
                 server = new TcpListener(ip, port);
                 server.Start();
 
-                Byte[] buffer = new Byte[256];
+                Byte[] buffer = new Byte[1024];
 
                 // Listen
                 while (true)

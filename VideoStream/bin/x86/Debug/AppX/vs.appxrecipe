@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>F97F7103A03D20596A05B5F363BF95BC14F75E38C5E63B6757B12B1B535CCBBF</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>F30ED1E4F569556E0E4F0A0AC98C6C8F869048FCA62FBDF2664F39977C475896</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>bdae4af8-b149-4b31-b7d6-cc1f584b28b7_1.0.0.0_x86__084wswmess10g</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>bdae4af8-b149-4b31-b7d6-cc1f584b28b7_084wswmess10g!App</RegisteredUserModeAppID>
     <RegisteredPackageID>bdae4af8-b149-4b31-b7d6-cc1f584b28b7</RegisteredPackageID>
@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-06-02T14:41:00.543</Modified>
+      <Modified>2020-06-02T18:13:13.734</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\VideoStream.exe">
       <PackagePath>entrypoint\VideoStream.exe</PackagePath>
-      <Modified>2020-06-02T14:41:00.140</Modified>
+      <Modified>2020-06-02T18:13:13.246</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -94,23 +94,27 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\VideoStream.xr.xml">
       <PackagePath>VideoStream.xr.xml</PackagePath>
-      <Modified>2020-06-02T13:40:10.086</Modified>
+      <Modified>2020-06-02T15:31:30.431</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-06-02T14:40:59.978</Modified>
+      <Modified>2020-06-02T18:13:13.090</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\Client.xbf">
       <PackagePath>Client.xbf</PackagePath>
-      <Modified>2020-06-02T14:40:59.978</Modified>
+      <Modified>2020-06-02T18:13:13.090</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-06-02T14:40:59.979</Modified>
+      <Modified>2020-06-02T18:13:13.090</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\Server.xbf">
       <PackagePath>Server.xbf</PackagePath>
-      <Modified>2020-06-02T14:40:59.979</Modified>
+      <Modified>2020-06-02T18:13:13.090</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\WebcamFrames.xbf">
+      <PackagePath>WebcamFrames.xbf</PackagePath>
+      <Modified>2020-06-02T18:13:13.090</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -118,11 +122,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-06-02T14:20:22.237</Modified>
+      <Modified>2020-06-02T16:55:57.988</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\Core\VideoStream.exe">
       <PackagePath>VideoStream.exe</PackagePath>
-      <Modified>2020-06-02T14:41:00.539</Modified>
+      <Modified>2020-06-02T18:13:13.713</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

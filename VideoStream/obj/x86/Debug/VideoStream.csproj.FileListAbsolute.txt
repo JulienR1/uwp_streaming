@@ -182,3 +182,8 @@ C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\x86\Debug\resources.en-us
 C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885454160000000.json
 C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885490160000000.json
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\WebcamFrames.xbf
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\x86\Debug\WebcamFrames.g.i.cs
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\x86\Debug\WebcamFrames.g.cs
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\x86\Debug\WebcamFrames.xaml
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\x86\Debug\WebcamFrames.xbf

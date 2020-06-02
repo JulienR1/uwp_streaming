@@ -20,9 +20,12 @@
             <TextBlock x:Name="feedback" Text="feedback" FontSize="30" HorizontalAlignment="Center"/>
         </StackPanel>
 
-        <StackPanel HorizontalAlignment="Center" Grid.Row="1" Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Center" Grid.Row="1">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <Button x:Name="btnServer" Content="Server" FontSize="30" Padding="20" Margin="10" Click="btnServer_Click"/>
             <Button x:Name="btnClient" Content="Client" FontSize="30" Padding="20" Margin="10" Click="btnClient_Click"/>
+            </StackPanel>
+            <Button x:Name="btnCameraFrames" Content="Webcam frames" FontSize="30" Padding="20" Margin="10" Click="btnCameraFrames_Click"/>
         </StackPanel>
 
 

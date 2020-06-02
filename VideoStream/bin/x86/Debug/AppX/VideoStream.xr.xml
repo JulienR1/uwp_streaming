@@ -61,5 +61,6 @@
     </RootType>
     <RootType FullName="VideoStream.MainPage" />
     <RootType FullName="VideoStream.Server" />
+    <RootType FullName="VideoStream.WebcamFrames" />
   </Roots.RootTypes>
 </Roots>

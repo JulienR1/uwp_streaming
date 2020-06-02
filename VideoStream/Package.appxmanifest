@@ -4,7 +4,9 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  IgnorableNamespaces="uap mp">
+  xmlns:uap6="http://schemas.microsoft.com/appx/manifest/uap/windows10/6"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  IgnorableNamespaces="uap mp uap6 uap3">
 
   <Identity
     Name="bdae4af8-b149-4b31-b7d6-cc1f584b28b7"
