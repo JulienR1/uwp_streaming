@@ -8,7 +8,6 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using System.Drawing;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -16,6 +15,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage.Streams;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -35,7 +36,7 @@ namespace VideoStream
             this.InitializeComponent();            
         }
 
-        private void StartServer()
+        private async void StartServer()
         {
             try
             {
@@ -47,8 +48,7 @@ namespace VideoStream
                 server = new TcpListener(ip, port);
                 server.Start();
 
-                Byte[] bytes = new Byte[256];
-                string data = null;
+                Byte[] buffer = new Byte[256];
 
                 // Listen
                 while (true)
@@ -57,24 +57,39 @@ namespace VideoStream
                     TcpClient client = server.AcceptTcpClient();
                     print("Connected!");
 
-                    data = null;
-
                     NetworkStream stream = client.GetStream();
 
                     int i;
-                    while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                    //   byte[] byteCountBuffer = new byte[64];
+                    //  byte[] receivedImgByteCount = new byte[stream.Read(byteCountBuffer, 0, 4)];
+                    //                    int receivedImgBytes = BitConverter.ToInt32(receivedImgByteCount, 0);
+
+                    //     byte[] receivedImg = new byte[receivedImgBytes];
+                    //                  int currentIndex = 0;
+
+                    List<byte> img = new List<byte>();
+                    int currentIndex = 0;
+
+                    while ((i = stream.Read(buffer, 0, buffer.Length)) != 0)
                     {
-                        data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                        print("Received: " + data);
+                        img.InsertRange(currentIndex, buffer);
+                        currentIndex += i;
                     }
 
-                    byte[] imgBytes = new byte[1024];
-                    client.Close();
-                    client = server.AcceptTcpClient();
-                    imgBytes = ReceiveVarData(client.Client);
-                    MemoryStream ms = new MemoryStream(imgBytes);
-                    System.Drawing.Image bmp = System.Drawing.Image.FromStream(ms);
-                    print("Received image");
+                    using (InMemoryRandomAccessStream imgStream = new InMemoryRandomAccessStream())
+                    {
+                        using(DataWriter writer = new DataWriter(imgStream.GetOutputStreamAt(0)))
+                        {
+                            writer.WriteBytes(img.ToArray());
+                            await writer.StoreAsync();
+                        }
+                        await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+                        {
+                            BitmapImage bmpImg = new BitmapImage();
+                            await bmpImg.SetSourceAsync(imgStream);
+                            imgRender.Source = bmpImg;
+                        });                        
+                    }
                 }
             }
             catch (SocketException e)
@@ -86,32 +101,7 @@ namespace VideoStream
                 server.Stop();
             }
             print("Server closed");
-        }
-
-        private static byte[] ReceiveVarData(Socket s)
-        {
-            int total = 0;
-            int recv;
-            byte[] datasize = new byte[4];
-
-            recv = s.Receive(datasize, 0, 4, 0);
-            int size = BitConverter.ToInt32(datasize, 0);
-            int dataleft = size;
-            byte[] data = new byte[size];
-
-
-            while (total < size)
-            {
-                recv = s.Receive(data, total, dataleft, 0);
-                if (recv == 0)
-                {
-                    break;
-                }
-                total += recv;
-                dataleft -= recv;
-            }
-            return data;
-        }
+        }       
 
         private async void GetIp()
         {

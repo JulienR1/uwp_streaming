@@ -4170,7 +4170,7 @@
       ]
     },
     "NETStandard.Library/2.0.3": {
-      "sha512": "548M6mnBSJWxsIlkQHfbzoYxpiYFXZZSL00p4GHYv8PkiqFBnnT68mW5mGEsA/ch9fDO9GkPgkFQpWiXZN7mAQ==",
+      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
       "path": "netstandard.library/2.0.3",
       "files": [
@@ -8269,11 +8269,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\dev\\uwp\\uwp_streaming\\VideoStream\\VideoStream.csproj",
+      "projectUniqueName": "C:\\Users\\JulienR\\Desktop\\uwp_streaming\\VideoStream\\VideoStream.csproj",
       "projectName": "VideoStream",
-      "projectPath": "D:\\dev\\uwp\\uwp_streaming\\VideoStream\\VideoStream.csproj",
+      "projectPath": "C:\\Users\\JulienR\\Desktop\\uwp_streaming\\VideoStream\\VideoStream.csproj",
       "packagesPath": "C:\\Users\\JulienR\\.nuget\\packages\\",
-      "outputPath": "D:\\dev\\uwp\\uwp_streaming\\VideoStream\\obj\\",
+      "outputPath": "C:\\Users\\JulienR\\Desktop\\uwp_streaming\\VideoStream\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

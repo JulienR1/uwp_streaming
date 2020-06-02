@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Drawing;
 using System.Net.Sockets;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
@@ -17,6 +16,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Media.Playback;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.Graphics.Imaging;
+using Windows.Storage;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -34,7 +36,7 @@ namespace VideoStream
             this.InitializeComponent();            
         }
 
-        private void StartClient()
+        private async void StartClient()
         {
             try
             {
@@ -48,19 +50,30 @@ namespace VideoStream
                 Byte[] data = System.Text.Encoding.ASCII.GetBytes("Hello world");
 
                 NetworkStream stream = client.GetStream();
-                stream.Write(data, 0, data.Length);
+           //     stream.Write(data, 0, data.Length);
                 print("Sent message");
 
                 print("Encoding image");
-                Bitmap img = new Bitmap("Assets/imgToSend.jpg");
-                MemoryStream ms = new MemoryStream();
-                img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                Byte[] imgBytes = ms.GetBuffer();
-                img.Dispose();
-                ms.Close();
+                /*  FileStream imgStream = new FileStream("D:/imgToSend.jpg", FileMode.Open, FileAccess.Read);
+                  MemoryStream ms = new MemoryStream();
+                  ms.SetLength(imgStream.Length);
+                  imgStream.Read(ms.GetBuffer(), 0, (int)imgStream.Length);
+
+                  ms.Flush();
+                  imgStream.Close();
+                  ms.Close();
+
+                  byte[] imgBytes = ms.ToArray();
+                  ms.Flush();
+                  imgStream.Close();    */
+
+                StorageFolder installationFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+                StorageFile file = await installationFolder.GetFileAsync(@"Assets\imgToSend.jpg");
+                byte[] imgBytes = File.Exists(file.Path) ? File.ReadAllBytes(file.Path) : null;
 
                 print("Sending image");
-                SendVarData(client.Client, imgBytes);
+              //  stream.Write(BitConverter.GetBytes(imgBytes.Length), 0, 4);
+                stream.Write(imgBytes, 0, imgBytes.Length);
                 print("Image sent");
 
 
@@ -75,26 +88,6 @@ namespace VideoStream
             {
                 print("Socket Exception: " + e);
             }
-        }
-
-        private static int SendVarData(Socket s, byte[] data)
-        {
-            int total = 0;
-            int size = data.Length;
-            int dataleft = size;
-            int sent;
-
-            byte[] datasize = new byte[4];
-            datasize = BitConverter.GetBytes(size);
-            sent = s.Send(datasize);
-
-            while (total < size)
-            {
-                sent = s.Send(data, total, dataleft, SocketFlags.None);
-                total += sent;
-                dataleft -= sent;
-            }
-            return total;
         }
 
         private async void print(string s)

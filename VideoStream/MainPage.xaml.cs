@@ -89,7 +89,7 @@ namespace VideoStream
 
             try
             {
-                webcamPreview.Source = mediaCapture;                
+                webcamPreview.Source = mediaCapture;
                 await mediaCapture.StartPreviewAsync();
                 isPreviewing = true;
 

@@ -1,0 +1,1 @@
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\VideoStream.csproj;arm

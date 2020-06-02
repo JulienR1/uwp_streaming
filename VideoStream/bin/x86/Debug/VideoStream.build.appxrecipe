@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>BUREAU-JULIEN</Machine>
+    <Machine>DESKTOP-5OUDH32</Machine>
     <WindowsUser>JulienR</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -10,22 +10,22 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>bdae4af8-b149-4b31-b7d6-cc1f584b28b7</PackageIdentityName>
     <PackageIdentityPublisher>CN=JulienR</PackageIdentityPublisher>
-    <IntermediateOutputPath>D:\dev\uwp\uwp_streaming\VideoStream\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\VideoStream.exe">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\VideoStream.exe">
       <PackagePath>entrypoint\VideoStream.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
@@ -37,61 +37,61 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.18362.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\Assets\imgToSend.jpg">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\Assets\imgToSend.jpg">
       <PackagePath>Assets\imgToSend.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\VideoStream.xr.xml">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\VideoStream.xr.xml">
       <PackagePath>VideoStream.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\Client.xbf">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\Client.xbf">
       <PackagePath>Client.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\Server.xbf">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\Server.xbf">
       <PackagePath>Server.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\dev\uwp\uwp_streaming\VideoStream\bin\x86\Debug\Core\VideoStream.exe">
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\x86\Debug\Core\VideoStream.exe">
       <PackagePath>VideoStream.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
