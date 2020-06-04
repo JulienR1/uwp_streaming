@@ -37,34 +37,38 @@ namespace WebCameraFeed
         private void Start(object sender, RoutedEventArgs e)
         {
             client = new TcpClient(App.ip.ToString(), App.port);
-            stream = client.GetStream();            
+            stream = client.GetStream();
 
-            SendImage();
-       //     Thread thread = new Thread(new ThreadStart(SendImage));
-       //     thread.Start();
+            Thread thread = new Thread(new ThreadStart(SendImage));
+            thread.Start();
+            //  SendImage();
         }
 
         private async void SendImage()
         {
-            SoftwareBitmap bmp = App.previewVideoFrames.Dequeue();
-            WriteableBitmap bmpBuffer = new WriteableBitmap(bmp.PixelWidth, bmp.PixelHeight);
-            bmp.CopyToBuffer(bmpBuffer.PixelBuffer);
+            SoftwareBitmap bmp = App.previewVideoFrames.Dequeue();            
 
-            await imagePreview.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () => {
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () => {
                 SoftwareBitmapSource src = new SoftwareBitmapSource();
                 await src.SetBitmapAsync(bmp);
                 imagePreview.Source = src;
+                //         src.Dispose();
+
+                WriteableBitmap bmpBuffer = new WriteableBitmap(bmp.PixelWidth, bmp.PixelHeight);
+                bmp.CopyToBuffer(bmpBuffer.PixelBuffer);
+
+                byte[] bytes = bmpBuffer.PixelBuffer.ToArray();
+                byte[] widthBytes = BitConverter.GetBytes(bmp.PixelWidth);
+                byte[] heightBytes = BitConverter.GetBytes(bmp.PixelHeight);
+                byte[] imgSizeBytes = BitConverter.GetBytes(bytes.Length);
+
+                bmp.Dispose();
+
+                stream.Write(imgSizeBytes, 0, imgSizeBytes.Length);
+                stream.Write(widthBytes, 0, widthBytes.Length);
+                stream.Write(heightBytes, 0, heightBytes.Length);
+                stream.Write(bytes, 0, bytes.Length);
             });
-
-            byte[] bytes = bmpBuffer.PixelBuffer.ToArray();
-            byte[] widthBytes = BitConverter.GetBytes(bmp.PixelWidth);
-            byte[] heightBytes = BitConverter.GetBytes(bmp.PixelHeight);
-            byte[] imgSizeBytes = BitConverter.GetBytes(bytes.Length);
-
-            stream.Write(imgSizeBytes, 0, imgSizeBytes.Length);
-            stream.Write(widthBytes, 0, widthBytes.Length);
-            stream.Write(heightBytes, 0, heightBytes.Length);
-            stream.Write(bytes, 0, bytes.Length);
         }
     }
 }

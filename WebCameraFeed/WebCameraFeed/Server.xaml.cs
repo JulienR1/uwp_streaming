@@ -46,7 +46,7 @@ namespace WebCameraFeed
         {
             server = new TcpListener(App.ip, App.port);
             server.Start();
-            buffer = new byte[1024];
+            buffer = new byte[32];
 
             TcpClient client = server.AcceptTcpClient();
             stream = client.GetStream();
@@ -64,7 +64,7 @@ namespace WebCameraFeed
                     imgSize = BitConverter.ToInt32(buffer, 0);
                     imgWidth = BitConverter.ToInt32(buffer, 4);
                     imgHeight = BitConverter.ToInt32(buffer, 8);                    
-                    buffer = new byte[1024];
+                    buffer = new byte[16384];
                     imgBytes = new List<byte>();
                 }
 
@@ -72,6 +72,7 @@ namespace WebCameraFeed
                 {
                     stream.Read(buffer, 0, Math.Min(imgSize - imgBytes.Count, buffer.Length));
                     imgBytes.InsertRange(imgBytes.Count, buffer);
+                    Thread.Sleep(10);
                 }
                 imgSize = 0;
 
