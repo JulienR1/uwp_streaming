@@ -25,7 +25,7 @@ namespace WebCameraFeed
     sealed partial class App : Application
     {
         public static Queue<SoftwareBitmap> previewVideoFrames = new Queue<SoftwareBitmap>();
-        public static IPAddress ip = IPAddress.Parse("192.168.2.53");
+        public static IPAddress ip = IPAddress.Parse("127.0.0.1");//("192.168.2.53");
         public static int port = 5050;
 
         /// <summary>

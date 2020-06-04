@@ -69,7 +69,7 @@ namespace WebCameraFeed
         private async void PreviewFrame()
         {
             while (isCapturingFrames)
-            {                
+            {
                 VideoEncodingProperties properties = captureManager.VideoDeviceController.GetMediaStreamProperties(MediaStreamType.VideoPreview) as VideoEncodingProperties;
                 VideoFrame videoFrame = new VideoFrame(BitmapPixelFormat.Bgra8, (int)properties.Width, (int)properties.Height);
                 // OVERFLOW problem
@@ -79,7 +79,8 @@ namespace WebCameraFeed
                      SoftwareBitmapSource bmpSource = new SoftwareBitmapSource();
                      await bmpSource.SetBitmapAsync(frame.SoftwareBitmap);
                      imagePreview.Source = bmpSource;
-                 });
+                 });                
+
                 App.previewVideoFrames.Enqueue(frame.SoftwareBitmap);
                 frame.Dispose();
                 videoFrame.Dispose();

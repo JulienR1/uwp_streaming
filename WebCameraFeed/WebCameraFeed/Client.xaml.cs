@@ -41,18 +41,17 @@ namespace WebCameraFeed
 
             Thread thread = new Thread(new ThreadStart(SendImage));
             thread.Start();
-            //  SendImage();
         }
 
         private async void SendImage()
         {
-            SoftwareBitmap bmp = App.previewVideoFrames.Dequeue();            
+            SoftwareBitmap bmp = App.previewVideoFrames.Dequeue();
 
-            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () => {
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+            {
                 SoftwareBitmapSource src = new SoftwareBitmapSource();
                 await src.SetBitmapAsync(bmp);
                 imagePreview.Source = src;
-                //         src.Dispose();
 
                 WriteableBitmap bmpBuffer = new WriteableBitmap(bmp.PixelWidth, bmp.PixelHeight);
                 bmp.CopyToBuffer(bmpBuffer.PixelBuffer);
