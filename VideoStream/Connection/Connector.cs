@@ -13,15 +13,21 @@ namespace VideoStream
         public enum DataType { Text, Image };
         public enum ConnectionType { Read, Write, Both };
 
+        protected ConnectionType connectionType;
+
         protected Stream connection;
         protected byte[] buffer = new byte[App.BUFFER_SIZE];
 
-        protected abstract void Connect(ConnectionType connectionType);
-        protected abstract void Read();
-        protected abstract void Write();
+        public virtual void Connect(ConnectionType connectionType)
+        {
+            this.connectionType = connectionType;
+        }
 
-        protected abstract void Start();
-        protected abstract void Stop();
+        public abstract void Read();
+        public abstract void Write<T>(T data);
+
+        public abstract void Start();
+        public abstract void Stop();
 
         protected byte[] Encode<T>(T toEncode, DataType dataType)
         {

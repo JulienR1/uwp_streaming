@@ -62,3 +62,13 @@ C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\ARM\Debug\WebcamFrames.g.
 C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\ARM\Debug\WebcamFrames.g.cs
 C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\ARM\Debug\WebcamFrames.xaml
 C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\ARM\Debug\WebcamFrames.xbf
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\ARM\Debug\Test1.xbf
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\ARM\Debug\Test2.xbf
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\ARM\Debug\Test1.g.i.cs
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\ARM\Debug\Test1.g.cs
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\ARM\Debug\Test2.g.i.cs
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\ARM\Debug\Test2.g.cs
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\ARM\Debug\Test1.xaml
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\ARM\Debug\Test2.xaml
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\ARM\Debug\Test1.xbf
+C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\obj\ARM\Debug\Test2.xbf

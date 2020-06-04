@@ -85,6 +85,12 @@
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\ARM\Debug\Server.xbf">
       <PackagePath>Server.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\ARM\Debug\Test1.xbf">
+      <PackagePath>Test1.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\ARM\Debug\Test2.xbf">
+      <PackagePath>Test2.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\VideoStream\bin\ARM\Debug\WebcamFrames.xbf">
       <PackagePath>WebcamFrames.xbf</PackagePath>
     </AppxPackagedFile>

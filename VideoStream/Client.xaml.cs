@@ -19,6 +19,9 @@ using Windows.Media.Playback;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Graphics.Imaging;
 using Windows.Storage;
+using System.Security.Cryptography;
+using Windows.Storage.Streams;
+using System.Drawing;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,12 +34,38 @@ namespace VideoStream
     {
         private string ip = "";
 
+        byte[] bytes;
+        SoftwareBitmap bmp;
+
+        public static Queue<SoftwareBitmapSource> bmpToSend = new Queue<SoftwareBitmapSource>();
+
         public Client()
         {
-            this.InitializeComponent();            
+            this.InitializeComponent();
+
+            go();
+
+  //          WriteableBitmap wbmp = new WriteableBitmap(bmp.PixelWidth, bmp.PixelHeight);
+  //          bmp.CopyToBuffer(wbmp.PixelBuffer);
+
+            //imgRender.Source = wbmp;
+
+            //bytes = wbmp.PixelBuffer.ToArray();
+
+           // print(bytes.Length.ToString());
         }
 
-        private async void StartClient()
+        async void go()
+        {
+            await bmpToSend.Dequeue().SetBitmapAsync(bmp);
+            bytes = null;
+
+            print(bmpToSend.Count.ToString());
+            print(bmp.PixelWidth + " x " + bmp.PixelHeight);
+            print(bmp.ToString());
+        }
+
+    private void StartClient()
         {
             try
             {
@@ -45,15 +74,43 @@ namespace VideoStream
                 Int32 port = 5050;
                 TcpClient client = new TcpClient();
                 client.Connect(ip, port);
-
-                print("Encoding message");
-                Byte[] data = System.Text.Encoding.ASCII.GetBytes("Hello world");
-
                 NetworkStream stream = client.GetStream();
-           //     stream.Write(data, 0, data.Length);
-                print("Sent message");
 
-                print("Encoding image");
+
+                
+                /*    using (InMemoryRandomAccessStream ms = new InMemoryRandomAccessStream())
+                    {
+                        BitmapDecoder decoder = await BitmapDecoder.CreateAsync(BitmapDecoder.JpegDecoderId, ms);
+
+                        BitmapTransform transform = new BitmapTransform()
+                        {
+                            ScaledWidth = Convert.ToUInt32(bmp.PixelWidth),
+                            ScaledHeight = Convert.ToUInt32(bmp.PixelHeight)
+                        };
+
+                        PixelDataProvider pixelData = await decoder.GetPixelDataAsync(
+                            BitmapPixelFormat.Bgra8,
+                            BitmapAlphaMode.Straight,
+                            transform,
+                            ExifOrientationMode.IgnoreExifOrientation,
+                            ColorManagementMode.DoNotColorManage);
+
+                        bytes = pixelData.DetachPixelData();
+                        stream.Write(bytes, 0, bytes.Length);
+                    }*/
+
+
+
+                //  stream.Write(bytes, 0, bytes.Length);
+
+                /*      print("Encoding message");
+                      Byte[] data = System.Text.Encoding.ASCII.GetBytes("Hello world");
+
+                      NetworkStream stream = client.GetStream();
+                      stream.Write(data, 0, data.Length);
+                      print("Sent message");*/
+
+                //     print("Encoding image");
                 /*  FileStream imgStream = new FileStream("D:/imgToSend.jpg", FileMode.Open, FileAccess.Read);
                   MemoryStream ms = new MemoryStream();
                   ms.SetLength(imgStream.Length);
@@ -67,14 +124,14 @@ namespace VideoStream
                   ms.Flush();
                   imgStream.Close();    */
 
-                StorageFolder installationFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-                StorageFile file = await installationFolder.GetFileAsync(@"Assets\imgToSend.jpg");
-                byte[] imgBytes = File.Exists(file.Path) ? File.ReadAllBytes(file.Path) : null;
+                /*     StorageFolder installationFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+                     StorageFile file = await installationFolder.GetFileAsync(@"Assets\imgToSend.jpg");
+                     byte[] imgBytes = File.Exists(file.Path) ? File.ReadAllBytes(file.Path) : null;
 
-                print("Sending image");
-              //  stream.Write(BitConverter.GetBytes(imgBytes.Length), 0, 4);
-                stream.Write(imgBytes, 0, imgBytes.Length);
-                print("Image sent");
+                     print("Sending image");
+                   //  stream.Write(BitConverter.GetBytes(imgBytes.Length), 0, 4);
+                     stream.Write(imgBytes, 0, imgBytes.Length);
+                     print("Image sent");*/
 
 
                 stream.Close();

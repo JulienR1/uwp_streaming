@@ -163,6 +163,16 @@ namespace VideoStream
             OpenNewWindow(typeof(Client));
         }
 
+        private void btnServerConn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenNewWindow(typeof(Test2));
+        }
+
+        private void btnClientConn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenNewWindow(typeof(Test1));
+        }
+
         private void btnCameraFrames_Click(object sender, RoutedEventArgs e)
         {
             OpenNewWindow(typeof(WebcamFrames));

@@ -142,7 +142,7 @@ namespace VideoStream
 
                 ProcessImage();
             }
-            mediaFrameReference.Dispose();
+            mediaFrameReference?.Dispose();
         }
 
         private void ProcessImage()
@@ -157,10 +157,13 @@ namespace VideoStream
 
                 SoftwareBitmap latestBitmap;
                 while ((latestBitmap = Interlocked.Exchange(ref backBuffer, null)) != null)
-                {
+                {                    
                     SoftwareBitmapSource src = new SoftwareBitmapSource();
                     await src.SetBitmapAsync(latestBitmap);
                     localImgRenderer.Source = src;
+
+                    Client.bmpToSend.Enqueue(src);
+
                     latestBitmap.Dispose();
                 }
 

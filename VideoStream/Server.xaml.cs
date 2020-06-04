@@ -48,7 +48,7 @@ namespace VideoStream
                 server = new TcpListener(ip, port);
                 server.Start();
 
-                Byte[] buffer = new Byte[1024];
+                Byte[] buffer = new Byte[512];
 
                 // Listen
                 while (true)
@@ -57,7 +57,7 @@ namespace VideoStream
                     TcpClient client = server.AcceptTcpClient();
                     print("Connected!");
 
-                    NetworkStream stream = client.GetStream();
+                    NetworkStream stream = client.GetStream();                    
 
                     int i;
                     //   byte[] byteCountBuffer = new byte[64];

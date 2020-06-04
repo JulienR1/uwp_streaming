@@ -26,6 +26,6 @@
         <TextBlock x:Name="feedbackText" FontSize="20" Margin="20" Grid.Row="1" Grid.Column="0"/>
 
         <TextBlock Text="Target to send: " Grid.Row="0" Grid.Column="1" FontSize="16" VerticalAlignment="Bottom"/>
-        <Image Grid.Column="1" Grid.Row="1" Source="Assets/imgToSend.jpg"/>
+        <Image Name="imgRender" Grid.Column="1" Grid.Row="1" Source="Assets/imgToSend.jpg"/>
     </Grid>
 </Page>

@@ -37,9 +37,9 @@
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
+      <RootProperty Name="Name" />
       <RootProperty Name="Source" />
       <RootProperty Name="Stretch" />
-      <RootProperty Name="Name" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="FontSize" />
@@ -49,9 +49,10 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="Padding" />
-      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="VideoStream.Client" />
@@ -61,6 +62,8 @@
     </RootType>
     <RootType FullName="VideoStream.MainPage" />
     <RootType FullName="VideoStream.Server" />
+    <RootType FullName="VideoStream.Test1" />
+    <RootType FullName="VideoStream.Test2" />
     <RootType FullName="VideoStream.WebcamFrames" />
   </Roots.RootTypes>
 </Roots>

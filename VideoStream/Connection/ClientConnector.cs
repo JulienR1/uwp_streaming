@@ -11,14 +11,12 @@ namespace VideoStream
 {
     public class ClientConnector : Connector
     {
-        private ConnectionType connectionType;
         private TcpClient client;
-
         private Thread readingThread;
 
-        protected override void Connect(ConnectionType connectionType)
+        public override void Connect(ConnectionType connectionType)
         {
-            this.connectionType = connectionType;
+            base.Connect(connectionType);
             try
             {
                 client = new TcpClient(App.serverIP.ToString(), App.port);
@@ -32,28 +30,36 @@ namespace VideoStream
             }
         }
 
-        protected override void Start()
+        public override void Start()
         {
             if (connectionType == ConnectionType.Read || connectionType == ConnectionType.Both)
             {
                 readingThread = new Thread(new ThreadStart(Read));
+                readingThread.Start();
             }
         }
 
-        protected override void Stop()
+        public override void Stop()
         {
+            readingThread.Join();
             connection.Close();
             client.Close();
         }
 
-        protected override void Read()
+        public override void Read()
         {
             throw new NotImplementedException();
         }
 
-        protected override void Write()
+        public override void Write<String>(String text)
         {
-            throw new NotImplementedException();
+            byte[] msg = Parser.EncodeText(text.ToString());
+            byte[] msgByteCount = BitConverter.GetBytes(msg.Length);
+            byte[] connectionTypeBytes = BitConverter.GetBytes((int)DataType.Text);
+
+            connection.Write(msgByteCount, 0, msgByteCount.Length);
+            connection.Write(connectionTypeBytes, 0, connectionTypeBytes.Length);
+            connection.Write(msg, 0, msg.Length);
         }
     }
 }
