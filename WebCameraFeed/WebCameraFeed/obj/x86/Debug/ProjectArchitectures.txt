@@ -1,0 +1,1 @@
+D:\dev\uwp\uwp_streaming\WebCameraFeed\WebCameraFeed\WebCameraFeed.csproj;x86
