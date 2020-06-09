@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\dev\\uwp\\uwp_streaming\\WebCameraFeed\\WebCameraFeed\\WebCameraFeed.csproj": {}
+    "C:\\Users\\JulienR\\Desktop\\uwp_streaming\\WebCameraFeed\\WebCameraFeed\\WebCameraFeed.csproj": {}
   },
   "projects": {
-    "D:\\dev\\uwp\\uwp_streaming\\WebCameraFeed\\WebCameraFeed\\WebCameraFeed.csproj": {
+    "C:\\Users\\JulienR\\Desktop\\uwp_streaming\\WebCameraFeed\\WebCameraFeed\\WebCameraFeed.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\dev\\uwp\\uwp_streaming\\WebCameraFeed\\WebCameraFeed\\WebCameraFeed.csproj",
+        "projectUniqueName": "C:\\Users\\JulienR\\Desktop\\uwp_streaming\\WebCameraFeed\\WebCameraFeed\\WebCameraFeed.csproj",
         "projectName": "WebCameraFeed",
-        "projectPath": "D:\\dev\\uwp\\uwp_streaming\\WebCameraFeed\\WebCameraFeed\\WebCameraFeed.csproj",
+        "projectPath": "C:\\Users\\JulienR\\Desktop\\uwp_streaming\\WebCameraFeed\\WebCameraFeed\\WebCameraFeed.csproj",
         "packagesPath": "C:\\Users\\JulienR\\.nuget\\packages\\",
-        "outputPath": "D:\\dev\\uwp\\uwp_streaming\\WebCameraFeed\\WebCameraFeed\\obj\\",
+        "outputPath": "C:\\Users\\JulienR\\Desktop\\uwp_streaming\\WebCameraFeed\\WebCameraFeed\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [

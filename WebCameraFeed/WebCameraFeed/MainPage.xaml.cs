@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Windows.Devices.Enumeration;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Imaging;
@@ -43,8 +45,11 @@ namespace WebCameraFeed
 
         async private void InitCamera(object sender, RoutedEventArgs e)
         {
+            DeviceInformationCollection devices = await DeviceInformation.FindAllAsync(DeviceClass.VideoCapture);
+            string cameraId = devices[devices.Count - 1].Id;
+
             captureManager = new MediaCapture();
-            await captureManager.InitializeAsync();
+            await captureManager.InitializeAsync(new MediaCaptureInitializationSettings { VideoDeviceId = cameraId });
         }
 
         async private void StartPreview(object sender, RoutedEventArgs e)
@@ -72,19 +77,21 @@ namespace WebCameraFeed
             {
                 VideoEncodingProperties properties = captureManager.VideoDeviceController.GetMediaStreamProperties(MediaStreamType.VideoPreview) as VideoEncodingProperties;
                 VideoFrame videoFrame = new VideoFrame(BitmapPixelFormat.Bgra8, (int)properties.Width, (int)properties.Height);
-                // OVERFLOW problem
                 VideoFrame frame = await captureManager.GetPreviewFrameAsync(videoFrame);
-                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
-                 {
-                     SoftwareBitmapSource bmpSource = new SoftwareBitmapSource();
-                     await bmpSource.SetBitmapAsync(frame.SoftwareBitmap);
-                     imagePreview.Source = bmpSource;
-                 });                
-
-                App.previewVideoFrames.Enqueue(frame.SoftwareBitmap);
-                frame.Dispose();
+                /*  await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+                   {
+                       SoftwareBitmapSource bmpSource = new SoftwareBitmapSource();
+                       await bmpSource.SetBitmapAsync(frame.SoftwareBitmap);
+                       imagePreview.Source = bmpSource;
+                   }); */
+                Debug.WriteLine(frame.SoftwareBitmap);
+                // IMPORTANT
+                // Seulement si envoie de frame actif, sinon overflow qui explose
+                // Clear si le frame rate est trop grand
+                //App.previewVideoFrames.Enqueue(frame.SoftwareBitmap);
+                frame.Dispose();                
                 videoFrame.Dispose();
-                Thread.Sleep(75);
+                Thread.Sleep(75);                
             }
         }
 
