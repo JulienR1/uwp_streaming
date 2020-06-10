@@ -67,6 +67,9 @@ namespace VideoStream
                     //     byte[] receivedImg = new byte[receivedImgBytes];
                     //                  int currentIndex = 0;
 
+                    print("Sending the 4th value");
+                    stream.Write(BitConverter.GetBytes(5), 0, 4);
+
                     List<byte> img = new List<byte>();
                     int currentIndex = 0;
 
@@ -75,6 +78,11 @@ namespace VideoStream
                         img.InsertRange(currentIndex, buffer);
                         currentIndex += i;
                     }
+
+                    stream.Read(buffer, 0, 4);
+                    print(BitConverter.ToInt32(buffer, 0).ToString());
+
+                    /*
 
                     using (InMemoryRandomAccessStream imgStream = new InMemoryRandomAccessStream())
                     {
@@ -89,7 +97,7 @@ namespace VideoStream
                             await bmpImg.SetSourceAsync(imgStream);
                             imgRender.Source = bmpImg;
                         });                        
-                    }
+                    }*/
                 }
             }
             catch (SocketException e)

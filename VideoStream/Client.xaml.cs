@@ -43,7 +43,6 @@ namespace VideoStream
         {
             this.InitializeComponent();
 
-            go();
 
   //          WriteableBitmap wbmp = new WriteableBitmap(bmp.PixelWidth, bmp.PixelHeight);
   //          bmp.CopyToBuffer(wbmp.PixelBuffer);
@@ -57,12 +56,12 @@ namespace VideoStream
 
         async void go()
         {
-            await bmpToSend.Dequeue().SetBitmapAsync(bmp);
-            bytes = null;
+           // await bmpToSend.Dequeue().SetBitmapAsync(bmp);
+          //  bytes = null;
 
-            print(bmpToSend.Count.ToString());
-            print(bmp.PixelWidth + " x " + bmp.PixelHeight);
-            print(bmp.ToString());
+            //print(bmpToSend.Count.ToString());
+           // print(bmp.PixelWidth + " x " + bmp.PixelHeight);
+           // print(bmp.ToString());
         }
 
     private void StartClient()
@@ -76,7 +75,7 @@ namespace VideoStream
                 client.Connect(ip, port);
                 NetworkStream stream = client.GetStream();
 
-
+                Thread.Sleep(100000);
                 
                 /*    using (InMemoryRandomAccessStream ms = new InMemoryRandomAccessStream())
                     {

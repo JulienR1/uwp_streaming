@@ -11,7 +11,7 @@ using Windows.UI.Core;
 namespace WebcamPhotosStream
 {
     public class Client
-    {
+    {        
         private Webcam camera;
 
         private TcpClient client;
