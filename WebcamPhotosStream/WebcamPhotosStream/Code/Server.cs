@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using WebcamPhotosStream.Pages;
 using Windows.Devices.Printers;
 using Windows.Graphics.Imaging;
+using Windows.Storage.Streams;
 
 namespace WebcamPhotosStream
 {
@@ -30,9 +31,8 @@ namespace WebcamPhotosStream
 
         private void ConnectToClient()
         {
-            client = listener.AcceptTcpClient();            
+            client = listener.AcceptTcpClient();
             stream = client.GetStream();
-            
 
             GeneralInfos infos = ReadGeneralInfos();
             SendConfirmation();
@@ -52,12 +52,15 @@ namespace WebcamPhotosStream
             stream.Write(BitConverter.GetBytes(true), 0, 1);            
         }
 
-        private void ReadVideo(GeneralInfos infos)
+        private async void ReadVideo(GeneralInfos infos)
         {
             while (true)
             {
+                int imgSize = ReadInt();                
+
+                byte[] buffer = new byte[imgSize];
                 //byte[] buffer = new byte[76800];
-                byte[] buffer = new byte[infos.imgSize];
+                //byte[] buffer = new byte[infos.imgSize];
                 /*    while (imgBytes.Count < infos.imgSize)
                     {
                         int qtyToRead = Math.Min(infos.imgSize - imgBytes.Count, buffer.Length);
@@ -72,23 +75,30 @@ namespace WebcamPhotosStream
                 List<byte> imgBytes = new List<byte>();
                 int bytesRead = 0;
                 int amountToRead = 0;
-                while (bytesRead < infos.imgSize)
+                while (bytesRead < imgSize)
                 {
                     int insertionIndex = bytesRead;
-                    amountToRead = Math.Min(buffer.Length, infos.imgSize - bytesRead);
-                    bytesRead += stream.Read(buffer, 0, amountToRead);
+                    amountToRead = Math.Min(buffer.Length, imgSize - bytesRead);
+                    bytesRead += stream.Read(buffer, 0, amountToRead);                    
                     imgBytes.InsertRange(insertionIndex, buffer);
+                    imgBytes.RemoveRange(bytesRead, imgBytes.Count - bytesRead);
                 }
-                imgBytes.RemoveRange(infos.imgSize, imgBytes.Count - infos.imgSize);
+                imgBytes.RemoveRange(imgSize, imgBytes.Count - imgSize);
 
-                SoftwareBitmap receivedBmp = new SoftwareBitmap(BitmapPixelFormat.Bgra8, infos.imgWidth, infos.imgHeight, BitmapAlphaMode.Premultiplied);
-                receivedBmp.CopyFromBuffer(imgBytes.ToArray().AsBuffer());
+                SoftwareBitmap receivedBmp = null;// = new SoftwareBitmap(BitmapPixelFormat.Bgra8, infos.imgWidth, infos.imgHeight, BitmapAlphaMode.Premultiplied);
+         //       receivedBmp.CopyFromBuffer(imgBytes.ToArray().AsBuffer());
                 //receivedBmp.CopyFromBuffer(buffer.AsBuffer());
+
+                using (IRandomAccessStream ms = imgBytes.ToArray().AsBuffer().AsStream().AsRandomAccessStream())
+                {
+                    BitmapDecoder decoder = await BitmapDecoder.CreateAsync(BitmapDecoder.JpegDecoderId, ms);
+                    receivedBmp = await decoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
+                }
 
                 pgServer.instance.SetImage(receivedBmp);
 
                 Debug.WriteLine("Image received | len: " + infos.imgSize + " | " + buffer.Length + " | " + infos.imgWidth + " | " + infos.imgHeight);
-            }
+            }            
         }
 
         private int ReadInt()

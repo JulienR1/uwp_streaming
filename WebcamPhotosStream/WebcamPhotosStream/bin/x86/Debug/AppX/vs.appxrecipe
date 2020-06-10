@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-06-09T21:01:00.772</Modified>
+      <Modified>2020-06-10T17:29:41.534</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\WebcamPhotosStream.exe">
       <PackagePath>entrypoint\WebcamPhotosStream.exe</PackagePath>
-      <Modified>2020-06-09T21:01:00.080</Modified>
+      <Modified>2020-06-10T17:29:41.087</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -90,19 +90,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-06-09T20:59:59.220</Modified>
+      <Modified>2020-06-10T17:29:40.954</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-06-09T20:59:59.221</Modified>
+      <Modified>2020-06-10T17:29:40.954</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\Pages\pgClient.xbf">
       <PackagePath>Pages\pgClient.xbf</PackagePath>
-      <Modified>2020-06-09T20:59:59.221</Modified>
+      <Modified>2020-06-10T17:29:40.954</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\Pages\pgServer.xbf">
       <PackagePath>Pages\pgServer.xbf</PackagePath>
-      <Modified>2020-06-09T20:59:59.221</Modified>
+      <Modified>2020-06-10T17:29:40.954</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -110,11 +110,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-06-09T18:31:56.761</Modified>
+      <Modified>2020-06-10T13:04:02.491</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\Core\WebcamPhotosStream.exe">
       <PackagePath>WebcamPhotosStream.exe</PackagePath>
-      <Modified>2020-06-09T21:01:00.768</Modified>
+      <Modified>2020-06-10T17:29:41.530</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

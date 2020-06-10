@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
@@ -10,8 +11,10 @@ using Windows.Devices.Printers;
 using Windows.Graphics.Imaging;
 using Windows.Media;
 using Windows.Media.Capture;
+using Windows.Media.Core;
 using Windows.Media.Devices;
 using Windows.Media.MediaProperties;
+using Windows.Storage.Streams;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
@@ -66,13 +69,28 @@ namespace WebcamPhotosStream
             string cameraId = devices[devices.Count - 1].Id;
 
             camera = new MediaCapture();
-            await camera.InitializeAsync(new MediaCaptureInitializationSettings() { VideoDeviceId = cameraId });
+            await camera.InitializeAsync(new MediaCaptureInitializationSettings() { VideoDeviceId = cameraId });            
+            
+            var res = camera.VideoDeviceController.GetAvailableMediaStreamProperties(MediaStreamType.VideoPreview).ToList();
+            List<IMediaEncodingProperties> videoRes = new List<IMediaEncodingProperties>();
+            foreach(var s in res)
+            {
+                if (s.Subtype=="MJPG")
+                {
+                    if (((VideoEncodingProperties)s).Width / (float)((VideoEncodingProperties)s).Height == 16 / 9f)
+                    {
+                        videoRes.Add(s);
+                    }                    
+                }
+            }
+            await camera.VideoDeviceController.SetMediaStreamPropertiesAsync(MediaStreamType.VideoPreview, res[1]);            
+
             properties = camera.VideoDeviceController.GetMediaStreamProperties(MediaStreamType.VideoPreview) as VideoEncodingProperties;
         }
 
         private async Task StartPreview()
         {
-            // Necessaire pour que le preview se dirige à un endroitescalade 
+            // Necessaire pour que le preview se dirige à un endroit
             preview = new CaptureElement();
             preview.Source = camera;
             await camera.StartPreviewAsync();
@@ -102,15 +120,42 @@ namespace WebcamPhotosStream
                 return null;
 
             byte[] frameBytes = null;
-            await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            /*       await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                   {
+                       using (currentBmp)
+                       {
+                           WriteableBitmap bmpBuffer = new WriteableBitmap(currentBmp.PixelWidth, currentBmp.PixelHeight);
+                           currentBmp.CopyToBuffer(bmpBuffer.PixelBuffer);
+                           frameBytes = bmpBuffer.PixelBuffer.ToArray();                    
+                       }
+                   });*/
+
+            using (InMemoryRandomAccessStream ms = new InMemoryRandomAccessStream())
             {
-                using (currentBmp)
+                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, ms);
+                encoder.SetSoftwareBitmap(currentBmp);
+
+                try
                 {
-                    WriteableBitmap bmpBuffer = new WriteableBitmap(currentBmp.PixelWidth, currentBmp.PixelHeight);
-                    currentBmp.CopyToBuffer(bmpBuffer.PixelBuffer);
-                    frameBytes = bmpBuffer.PixelBuffer.ToArray();
+                    await encoder.FlushAsync();
                 }
-            });
+                catch (Exception) { return new byte[0]; }
+
+                frameBytes = new byte[ms.Size];
+                Debug.WriteLine(ms.Size + " VS " + Width * Height * 4);
+                await ms.ReadAsync(frameBytes.AsBuffer(), (uint)ms.Size, InputStreamOptions.None);
+            }
+
+           // IRandomAccessStream stream = new InMemoryRandomAccessStream();
+           // BitmapDecoder decoder = await BitmapDecoder.CreateAsync(BitmapDecoder.BmpDecoderId, stream);
+           // await decoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
+
+          /*  IRandomAccessStream stream = new InMemoryRandomAccessStream();
+            BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, stream);
+            encoder.SetSoftwareBitmap(currentBmp);
+            await encoder.FlushAsync();
+            Debug.WriteLine(stream.Size);*/
+
             currentBmp = null;
             return frameBytes;
         }

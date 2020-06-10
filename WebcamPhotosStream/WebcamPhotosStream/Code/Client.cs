@@ -61,14 +61,22 @@ namespace WebcamPhotosStream
         private async void SendImages()
         {
             while (true)
-            {
-                byte[] img = await camera.GetFrameBytesAsync();
+            {                
+                byte[] img = await camera.GetFrameBytesAsync();                
                 if (img != null)
-                {
-                    stream.Write(img, 0, img.Length);
-                    Debug.WriteLine("Sent image | len: " + img.Length);
+                {                    
+                    byte[] imgSize = BitConverter.GetBytes(img.Length);
+                    byte[] imgWithHeader = new byte[img.Length + imgSize.Length];
+
+                //    Debug.WriteLine("length sent: " + img.Length + "(" + imgSize.Length + ")");
+
+                    imgSize.CopyTo(imgWithHeader, 0);
+                    img.CopyTo(imgWithHeader, imgSize.Length);
+                    //stream.Write(img, 0, img.Length);
+                    stream.Write(imgWithHeader, 0, imgWithHeader.Length);
+                 //   Debug.WriteLine("Sent image | len: " + img.Length);
                 }
-                Thread.Sleep(30);
+            //    Thread.Sleep(30);
             }
         }
     }
