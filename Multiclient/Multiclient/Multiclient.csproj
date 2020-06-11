@@ -119,11 +119,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Communication\BindableBase.cs" />
+    <Compile Include="BindableBase.cs" />
     <Compile Include="Communication\Client.cs" />
     <Compile Include="Communication\CommunicationState.cs" />
     <Compile Include="Communication\Communicator.cs" />
     <Compile Include="Communication\Server.cs" />
+    <Compile Include="VideoFeed\BitmapHelper.cs" />
+    <Compile Include="VideoFeed\Webcam.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

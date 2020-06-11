@@ -53,15 +53,20 @@ namespace Multiclient.Communication
 
         private void SendServerCommunicationState(CommunicationState clientCommunicationState)
         {
-            CommunicationState serverCommunicationState;
+            CommunicationState serverCommunicationState = CommunicationState.Reading;
             if (clientCommunicationState == CommunicationState.Both)
                 serverCommunicationState = CommunicationState.Both;
-            else
-                serverCommunicationState = (CommunicationState)(1 - (int)clientCommunicationState);
+            else if (clientCommunicationState == CommunicationState.Writing)
+                serverCommunicationState = CommunicationState.Reading;
+            else if (clientCommunicationState == CommunicationState.Reading)
+                serverCommunicationState = CommunicationState.Writing;                
 
             stream.Write(BitConverter.GetBytes((int)serverCommunicationState), 0, 4);
         }      
         
+        // The client ID is its MAC address.
+        // The ID is not the same thing as the client number.
+        // The client number is only a simple way to select a particular device.
         private void SendClientID()
         {
             clientID = (from nic in NetworkInterface.GetAllNetworkInterfaces()
@@ -71,11 +76,12 @@ namespace Multiclient.Communication
             WriteWithHeader(stream, Encoding.ASCII.GetBytes(clientID));
         }
 
+        // Called by pgClient when ENTER is pressed
         public void SendData(string data)
         {
             messagesToSend.Enqueue(data);
         }
-
+        
         protected override void ReadData(object data)
         {
             byte[] messageBytes = ReadBytesWithHeader(stream);

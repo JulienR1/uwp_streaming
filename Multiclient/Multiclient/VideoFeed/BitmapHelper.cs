@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
+using System.Threading.Tasks;
+using Windows.Graphics.Imaging;
+using Windows.Networking.Sockets;
+using Windows.Storage.Streams;
+
+namespace Multiclient.VideoFeed
+{
+    public static class BitmapHelper
+    {
+        public static async Task<byte[]> BitmapToEncodedBytesAsync(SoftwareBitmap bmp)
+        {
+            using (InMemoryRandomAccessStream ms = new InMemoryRandomAccessStream())
+            {
+                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegXREncoderId, ms);
+                encoder.SetSoftwareBitmap(bmp);
+
+                try
+                {
+                    await encoder.FlushAsync();
+                }
+                catch (Exception) { return new byte[0]; }
+
+                byte[] bmpBytes = new byte[ms.Size];
+                await ms.ReadAsync(bmpBytes.AsBuffer(), (uint)ms.Size, InputStreamOptions.None);
+                return bmpBytes;
+            }
+        }
+
+        public static async Task<SoftwareBitmap> EncodedBytesToBitmapAsync(byte[] bmpBytes)
+        {
+            using (IRandomAccessStream ms = bmpBytes.AsBuffer().AsStream().AsRandomAccessStream())
+            {
+                BitmapDecoder decoder = await BitmapDecoder.CreateAsync(BitmapDecoder.JpegXRDecoderId, ms);
+                return await decoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
+            }
+        }
+    }
+}

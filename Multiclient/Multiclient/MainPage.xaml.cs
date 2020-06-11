@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -29,13 +30,20 @@ namespace Multiclient
         public MainPage()
         {
             this.InitializeComponent();
-            server = new Server(OnReceivedData);
-            server.StartServer();
-            Window.Current.Closed += delegate
+
+            Webcam.Start();
+
+            try
             {
-                if (server != null)
-                    server.StopServer();
-            };
+                server = new Server(OnReceivedData);
+                server.StartServer();
+                Window.Current.Closed += delegate
+                {
+                    if (server != null)
+                        server.StopServer();
+                };
+            }
+            catch (SocketException) { outputField.Text = "You are not a server"; }
         }
 
         private void ClientClick(object sender, RoutedEventArgs e) => App.OpenNewWindow(typeof(pgClient), (CommunicationState)clientState.SelectedIndex);

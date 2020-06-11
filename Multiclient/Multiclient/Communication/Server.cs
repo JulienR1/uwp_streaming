@@ -65,7 +65,8 @@ namespace Multiclient.Communication
             string clientId = Encoding.ASCII.GetString(idBytes);
             
             ClientData data = new ClientData() { stream = stream, clientID = clientId, clientNo = currentClientNo };
-            allClients.Add(currentClientNo++, data);
+            allClients.Add(currentClientNo, data);
+            currentClientNo++;
 
             StartCommunication(currentCommunicationState, data);
         }
