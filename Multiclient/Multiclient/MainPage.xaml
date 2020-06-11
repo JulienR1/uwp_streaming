@@ -43,6 +43,7 @@
             <TextBox x:Name="clientIdInputField" Grid.Column="1" Padding="10" Margin="0 30 30 30" BorderBrush="#000" BorderThickness="2" Height="40" KeyDown="inputKeyDown"/>
         </Grid>
 
-        <TextBox IsReadOnly="True" Name="outputField" Grid.Row="2" Padding="10" Margin="30" BorderBrush="#000" BorderThickness="2" HorizontalAlignment="Stretch"/>
+        <TextBox Visibility="Collapsed" IsReadOnly="True" Name="outputField" Grid.Row="2" Padding="10" Margin="30" BorderBrush="#000" BorderThickness="2" HorizontalAlignment="Stretch"/>
+        <Image x:Name="videoPreview" Stretch="UniformToFill" Grid.Row="2"/>
     </Grid>
 </Page>

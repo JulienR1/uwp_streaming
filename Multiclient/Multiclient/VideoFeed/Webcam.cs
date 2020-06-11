@@ -20,13 +20,13 @@ namespace Multiclient.Communication
     {
         private static MediaCapture captureManager;
 
-        private static bool isCapturingFrames = false;
+        private static bool isCapturingFrames;
         private static int fps, width, height;
 
         private static CaptureElement videoPreview;
         private static SoftwareBitmap currentPicture;
 
-        public static async void Start(int fps = 30, int width = 1280, int height = 720)
+        public static async Task Start(int fps = 30, int width = 1280, int height = 720)
         {
             if (isCapturingFrames && captureManager.CameraStreamState != CameraStreamState.NotStreaming)
             {
