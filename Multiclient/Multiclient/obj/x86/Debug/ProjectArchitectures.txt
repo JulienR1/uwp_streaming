@@ -1,0 +1,1 @@
+C:\Users\JulienR\Desktop\uwp_streaming\Multiclient\Multiclient\Multiclient.csproj;x86
