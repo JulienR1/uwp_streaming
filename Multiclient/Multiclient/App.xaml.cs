@@ -25,7 +25,7 @@ namespace Multiclient
     /// </summary>
     sealed partial class App : Application
     {
-        public static IPAddress ip = IPAddress.Parse("127.0.0.1");
+        public static IPAddress ip = IPAddress.Parse("192.168.93.111");
         public static int port = 5050;
 
         /// <summary>
@@ -103,13 +103,13 @@ namespace Multiclient
             deferral.Complete();
         }
 
-        public static async void OpenNewWindow(Type pageToOpen)
+        public static async void OpenNewWindow(Type pageToOpen, object data)
         {
             AppWindow window = await AppWindow.TryCreateAsync();
             Frame frame = new Frame();
-            frame.Navigate(pageToOpen);
-            ElementCompositionPreview.SetAppWindowContent(window, frame);
-            await window.TryShowAsync();
+            frame.Navigate(pageToOpen, data);
+            ElementCompositionPreview.SetAppWindowContent(window, frame);            
+            await window.TryShowAsync();            
 
             window.Closed += delegate
             {

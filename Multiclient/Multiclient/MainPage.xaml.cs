@@ -38,14 +38,20 @@ namespace Multiclient
             };
         }
 
-        private void ClientClick(object sender, RoutedEventArgs e) => App.OpenNewWindow(typeof(pgClient));
+        private void ClientClick(object sender, RoutedEventArgs e) => App.OpenNewWindow(typeof(pgClient), (CommunicationState)clientState.SelectedIndex);
         private void inputKeyDown(object sender, KeyRoutedEventArgs e) { if (e.Key == VirtualKey.Enter) SendMessage(); }
 
         private void SendMessage()
-        {
+        { 
             string message = inputField.Text;
             string clientIdStr = clientIdInputField.Text;
-            int targetClientId = int.Parse(clientIdStr);
+
+            int targetClientId;
+            if(!int.TryParse(clientIdStr, out targetClientId))
+            {
+                outputField.Text += "Select a client to communicate with";
+                return;
+            }
 
             inputField.Text = "";
             clientIdInputField.Text = "";

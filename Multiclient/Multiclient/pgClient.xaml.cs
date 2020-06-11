@@ -1,6 +1,7 @@
 ﻿using Multiclient.Communication;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -28,6 +29,8 @@ namespace Multiclient
         private Client client = null;
         private vmClient vm;
 
+        private CommunicationState communicationState;
+
         public class vmClient : BindableBase
         {
             private Visibility inputVisible, reconnectVisible;
@@ -53,6 +56,15 @@ namespace Multiclient
             };
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if(e.Parameter is CommunicationState)
+            {
+                this.communicationState = (CommunicationState)e.Parameter;
+            }
+            base.OnNavigatedTo(e);
+        }
+
         private void OnLoadComplete(object sender, RoutedEventArgs e) => CreateClient();
         private void Reconnect(object sender, RoutedEventArgs e) => CreateClient();
         private void inputKeyDown(object sender, KeyRoutedEventArgs e) { if (e.Key == VirtualKey.Enter) SendMessage(); }
@@ -62,7 +74,7 @@ namespace Multiclient
             if (client == null)
             {
                 client = new Client(OnDataReceived);
-                client.StartClient(CommunicationState.Writing);
+                client.StartClient(communicationState);
             }
             vm.UpdateVisibility(client);
         }

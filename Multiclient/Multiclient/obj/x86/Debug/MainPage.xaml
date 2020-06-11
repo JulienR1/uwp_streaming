@@ -24,8 +24,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <StackPanel Margin="0 50" Grid.Row="0">
+        <StackPanel Margin="0 50" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:ConnectionId='6' Content="Open new client" Style="{StaticResource mainButton}"                    />
+            <ComboBox x:ConnectionId='7' Name="clientState" VerticalAlignment="Center" Width="200" SelectedIndex="0">
+                <ComboBoxItem>Reading</ComboBoxItem>
+                <ComboBoxItem>Writing</ComboBoxItem>
+                <ComboBoxItem>Both</ComboBoxItem>
+            </ComboBox> 
         </StackPanel>
 
         <Grid Grid.Row="1" >
