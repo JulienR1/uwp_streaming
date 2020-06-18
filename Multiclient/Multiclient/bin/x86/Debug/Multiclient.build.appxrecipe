@@ -76,6 +76,9 @@
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\Multiclient\Multiclient\bin\x86\Debug\pgClient.xbf">
       <PackagePath>pgClient.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\Multiclient\Multiclient\bin\x86\Debug\VideoFeedVisualization.xbf">
+      <PackagePath>VideoFeedVisualization.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>

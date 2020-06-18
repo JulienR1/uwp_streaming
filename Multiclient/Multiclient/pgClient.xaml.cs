@@ -9,12 +9,16 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Imaging;
 using Windows.System;
+using Windows.UI.Core.Preview;
+using Windows.UI.WindowManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -48,12 +52,7 @@ namespace Multiclient
         public pgClient()
         {
             this.InitializeComponent();
-            this.DataContext = vm = new vmClient();
-            Window.Current.Closed += delegate
-            {
-                if (client != null)
-                    client.CloseClient();
-            };
+            this.DataContext = vm = new vmClient();            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -62,15 +61,19 @@ namespace Multiclient
             {
                 this.communicationState = (CommunicationState)e.Parameter;
             }
-            base.OnNavigatedTo(e);
+            base.OnNavigatedTo(e);            
         }
 
         private void OnLoadComplete(object sender, RoutedEventArgs e) => CreateClient();
         private void Reconnect(object sender, RoutedEventArgs e) => CreateClient();
-        private void inputKeyDown(object sender, KeyRoutedEventArgs e) { if (e.Key == VirtualKey.Enter) SendMessage(); }
 
         private void CreateClient()
         {
+            MainPage.AppWindows[UIContext].Closed += delegate
+            {
+                client?.CloseClient();
+            };
+
             if (client == null)
             {
                 client = new Client(OnDataReceived);
@@ -79,15 +82,9 @@ namespace Multiclient
             vm.UpdateVisibility(client);
         }
 
-        private void SendMessage()
-        {
-            client.SendData(inputField.Text);
-            inputField.Text = "";
-        }
-
         private async void OnDataReceived(object data)
         {
-            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
             {
                 if (data.GetType() == typeof(bool) && (bool)data == false)
                 {
@@ -99,6 +96,12 @@ namespace Multiclient
                 {
                     outputField.Text += (string)data;
                     return;
+                }
+                else if (data.GetType() == typeof(SoftwareBitmap))
+                {
+                    SoftwareBitmapSource src = new SoftwareBitmapSource();
+                    await src.SetBitmapAsync((SoftwareBitmap)data);
+                    receptionImage.Source = src;
                 }
             });
         }

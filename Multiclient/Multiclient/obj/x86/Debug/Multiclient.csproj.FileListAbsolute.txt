@@ -48,3 +48,8 @@ C:\Users\JulienR\Desktop\uwp_streaming\Multiclient\Multiclient\obj\x86\Debug\qua
 C:\Users\JulienR\Desktop\uwp_streaming\Multiclient\Multiclient\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\JulienR\Desktop\uwp_streaming\Multiclient\Multiclient\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\JulienR\Desktop\uwp_streaming\Multiclient\Multiclient\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885490160000000.json
+C:\Users\JulienR\Desktop\uwp_streaming\Multiclient\Multiclient\bin\x86\Debug\VideoFeedVisualization.xbf
+C:\Users\JulienR\Desktop\uwp_streaming\Multiclient\Multiclient\obj\x86\Debug\VideoFeedVisualization.g.i.cs
+C:\Users\JulienR\Desktop\uwp_streaming\Multiclient\Multiclient\obj\x86\Debug\VideoFeedVisualization.g.cs
+C:\Users\JulienR\Desktop\uwp_streaming\Multiclient\Multiclient\obj\x86\Debug\VideoFeedVisualization.xaml
+C:\Users\JulienR\Desktop\uwp_streaming\Multiclient\Multiclient\obj\x86\Debug\VideoFeedVisualization.xbf

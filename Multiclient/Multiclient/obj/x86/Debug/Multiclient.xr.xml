@@ -68,6 +68,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Stretch" />
+      <RootProperty Name="Name" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
@@ -86,5 +87,13 @@
     <RootType FullName="Multiclient.MainPage" />
     <RootType FullName="Windows.UI.Xaml.Data.Binding" />
     <RootType FullName="Multiclient.pgClient" />
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
+      <RootProperty Name="Name" />
+      <RootProperty Name="Text" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="FontSize" />
+    </RootType>
+    <RootType FullName="Multiclient.VideoFeedVisualization" />
   </Roots.RootTypes>
 </Roots>

@@ -44,6 +44,6 @@
         </Grid>
 
         <TextBox Visibility="Collapsed" IsReadOnly="True" Name="outputField" Grid.Row="2" Padding="10" Margin="30" BorderBrush="#000" BorderThickness="2" HorizontalAlignment="Stretch"/>
-        <Image x:Name="videoPreview" Stretch="UniformToFill" Grid.Row="2"/>
+        <Image x:Name="receptionImage" Stretch="UniformToFill" Grid.Row="2"/>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Multiclient.VideoFeed;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -7,6 +8,8 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.Graphics.Imaging;
+using Windows.Media.Capture;
 using Windows.Perception.Spatial;
 using Windows.Security.Cryptography.Core;
 
@@ -20,7 +23,12 @@ namespace Multiclient.Communication
         private Dictionary<int, ClientData> allClients = new Dictionary<int, ClientData>();
         private int currentClientNo;
 
-        public Server(Action<object> callback) : base(callback) { }
+        private Func<string, Task> OpenVisualizationPage;
+
+        public Server(Action<object> callback, Func<string, Task> OpenVisualizationPage) : base(callback)
+        {
+            this.OpenVisualizationPage = OpenVisualizationPage;
+        }
 
         public void StartServer()
         {
@@ -35,6 +43,8 @@ namespace Multiclient.Communication
             serverIsActive = false;
             listener.Stop();
             listener = null;
+            inCommunication = false;
+            //TODO: close all other threads that were opened in between clients and server
         }
 
         public void WriteToClient(object message, int targetClientID)
@@ -56,41 +66,62 @@ namespace Multiclient.Communication
             }
         }
 
-        private void ExecuteClient(object obj)
+        private async void ExecuteClient(object obj)
         {
             NetworkStream stream = (NetworkStream)obj;
             CommunicationState currentCommunicationState = (CommunicationState)ReadIntFromStream(stream);
 
             byte[] idBytes = ReadBytesWithHeader(stream);
             string clientId = Encoding.ASCII.GetString(idBytes);
-            
-            ClientData data = new ClientData() { stream = stream, clientID = clientId, clientNo = currentClientNo };
+
+            if (currentCommunicationState != CommunicationState.Writing)
+                await OpenVisualizationPage(clientId);
+            ClientData data = new ClientData()
+            {
+                stream = stream,
+                clientID = clientId,
+                clientNo = currentClientNo
+            };
             allClients.Add(currentClientNo, data);
             currentClientNo++;
+
+            if (currentCommunicationState == CommunicationState.Writing)
+                await MainPage.StartWebcam();
 
             StartCommunication(currentCommunicationState, data);
         }
 
-        protected override void ReadData(object _data)
+        protected async override void ReadData(object _data)
         {
             ClientData data = (ClientData)_data;
-            while (serverIsActive)
-            {
-                byte[] message = ReadBytesWithHeader(data.stream);
+            byte[] message = ReadBytesWithHeader(data.stream);
 
-                string entryMessage = Encoding.ASCII.GetString(message);
-                callback($"Client {data.clientID}-{data.clientNo}: {entryMessage}");
+            if (message != null && message.Length != 0)
+            {
+                SoftwareBitmap receivedBmp = await BitmapHelper.EncodedBytesToBitmapAsync(message);
+                if (MainPage.videoFeeds.ContainsKey(data.clientID))
+                {
+                    MainPage.videoFeeds[data.clientID]?.Invoke(receivedBmp, data.clientID);
+                }
             }
         }
 
-        protected override void WriteData(object data)
+        protected async override void WriteData(object data)
         {
-           // throw new NotImplementedException();
+            SoftwareBitmap bmp = Webcam.CurrentFrame;
+            if (bmp == null)
+                return;
+
+            byte[] imgBytes = await BitmapHelper.BitmapToEncodedBytesAsync(bmp);
+            ClientData cData = (ClientData)data;
+            WriteWithHeader(cData.stream, imgBytes);
         }
 
-        public struct ClientData {
+        public struct ClientData
+        {
             public NetworkStream stream;
             public string clientID;
+            public string title;
             public int clientNo;
         }
     }

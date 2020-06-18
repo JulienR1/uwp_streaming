@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>548E499AA8814FE6BDC3FDC21094AEC5AC2ED38E0D2A8850358BC05897ABA789</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>3ABA54EE1BC0AC608A45CC86D02681AD573A69E5F687ADE2784E0D200F3B43F4</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>cbde0915-2cfb-451c-b4e2-2a9a476ea3c1_1.0.0.0_x86__084wswmess10g</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>cbde0915-2cfb-451c-b4e2-2a9a476ea3c1_084wswmess10g!App</RegisteredUserModeAppID>
     <RegisteredPackageID>cbde0915-2cfb-451c-b4e2-2a9a476ea3c1</RegisteredPackageID>
@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-06-11T19:19:52.600</Modified>
+      <Modified>2020-06-17T12:57:13.330</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\WebcamPhotosStream.exe">
       <PackagePath>entrypoint\WebcamPhotosStream.exe</PackagePath>
-      <Modified>2020-06-11T19:19:51.751</Modified>
+      <Modified>2020-06-17T12:57:12.647</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -90,19 +90,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-06-11T19:19:51.571</Modified>
+      <Modified>2020-06-17T12:57:12.488</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-06-11T19:19:51.571</Modified>
+      <Modified>2020-06-17T12:57:12.488</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\Pages\pgClient.xbf">
       <PackagePath>Pages\pgClient.xbf</PackagePath>
-      <Modified>2020-06-11T19:19:51.571</Modified>
+      <Modified>2020-06-17T12:57:12.489</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\Pages\pgServer.xbf">
       <PackagePath>Pages\pgServer.xbf</PackagePath>
-      <Modified>2020-06-11T19:19:51.572</Modified>
+      <Modified>2020-06-17T12:57:12.489</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -110,11 +110,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-06-10T13:04:02.491</Modified>
+      <Modified>2020-06-17T12:31:40.816</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\JulienR\Desktop\uwp_streaming\WebcamPhotosStream\WebcamPhotosStream\bin\x86\Debug\Core\WebcamPhotosStream.exe">
       <PackagePath>WebcamPhotosStream.exe</PackagePath>
-      <Modified>2020-06-11T19:19:52.569</Modified>
+      <Modified>2020-06-17T12:57:13.320</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -6,13 +6,15 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using WebcamPhotosStream.Code;
 using Windows.UI.Core;
 
 namespace WebcamPhotosStream
 {
     public class Client
-    {        
-        private Webcam camera;
+    {
+        //   private Webcam camera;
+        private ScreenCatpure camera;
 
         private TcpClient client;
         private NetworkStream stream;
@@ -24,16 +26,17 @@ namespace WebcamPhotosStream
 
         private async void StartAsync(CoreDispatcher dispatcher)
         {
-            camera = new Webcam();
-            await camera.Start(dispatcher, 30);
+            camera = new ScreenCatpure();
+            //await camera.Start(dispatcher, 30);
+            await camera.Initialize();
 
-            client = new TcpClient(App.ip.ToString(), App.port);
+        /*    client = new TcpClient(App.ip.ToString(), App.port);
             stream = client.GetStream();
             SendGeneralInfos();
-            ReceiveConfirmation();
+            ReceiveConfirmation();*/
         }
 
-        private void SendGeneralInfos()
+    /*    private void SendGeneralInfos()
         {
             byte[] imgWidth = BitConverter.GetBytes(camera.Width);
             byte[] imgHeight = BitConverter.GetBytes(camera.Height);
@@ -78,6 +81,6 @@ namespace WebcamPhotosStream
                 }
             //    Thread.Sleep(30);
             }
-        }
+        }*/
     }
 }

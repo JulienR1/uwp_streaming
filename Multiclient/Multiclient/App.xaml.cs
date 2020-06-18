@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -25,7 +27,7 @@ namespace Multiclient
     /// </summary>
     sealed partial class App : Application
     {
-        public static IPAddress ip = IPAddress.Parse("192.168.93.111");
+        public static IPAddress ip = IPAddress.Parse("192.168.93.110");
         public static int port = 5050;
 
         /// <summary>
@@ -103,13 +105,14 @@ namespace Multiclient
             deferral.Complete();
         }
 
-        public static async void OpenNewWindow(Type pageToOpen, object data)
+        public static async Task OpenNewWindow(Type pageToOpen, object data)
         {
             AppWindow window = await AppWindow.TryCreateAsync();
             Frame frame = new Frame();
-            frame.Navigate(pageToOpen, data);
-            ElementCompositionPreview.SetAppWindowContent(window, frame);            
-            await window.TryShowAsync();            
+            frame.Navigate(pageToOpen, data);            
+            ElementCompositionPreview.SetAppWindowContent(window, frame);
+            MainPage.AppWindows.Add(frame.UIContext, window);
+            await window.TryShowAsync();
 
             window.Closed += delegate
             {

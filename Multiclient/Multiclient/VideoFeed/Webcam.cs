@@ -66,11 +66,20 @@ namespace Multiclient.Communication
 
         private static async Task SetCameraProperties()
         {
-            VideoEncodingProperties properties = captureManager.VideoDeviceController.GetAvailableMediaStreamProperties(MediaStreamType.VideoPreview)
-                .Where(element => element.Subtype == "MJPG")
-                .Where(element => ((VideoEncodingProperties)element).Width == 1280 && ((VideoEncodingProperties)element).Height == 720)
+            List<IMediaEncodingProperties> test =  captureManager.VideoDeviceController.GetAvailableMediaStreamProperties(MediaStreamType.VideoPreview).ToList();
+            List<IMediaEncodingProperties> propertiesList = captureManager.VideoDeviceController.GetAvailableMediaStreamProperties(MediaStreamType.VideoPreview)
+                .Where(element => (element.Subtype == "MJPG" || element.Subtype == "NV12"))
                 .Where(element => ((VideoEncodingProperties)element).FrameRate.Numerator == fps)
-                .FirstOrDefault() as VideoEncodingProperties;
+                .ToList();
+            VideoEncodingProperties properties = null;
+            foreach (IMediaEncodingProperties p in propertiesList)
+            {
+                VideoEncodingProperties vp = (VideoEncodingProperties)p;
+                if (properties == null || properties.Width * properties.Height > vp.Width * vp.Height)
+                {
+                    properties = (VideoEncodingProperties)p;
+                }
+            }
 
             if (properties == null)
                 throw new Exception($"No camera found with resolution {width}x{height} at {fps}fps.");

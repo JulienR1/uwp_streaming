@@ -124,7 +124,11 @@
     <Compile Include="Communication\CommunicationState.cs" />
     <Compile Include="Communication\Communicator.cs" />
     <Compile Include="Communication\Server.cs" />
+    <Compile Include="VideoFeedVisualization.xaml.cs">
+      <DependentUpon>VideoFeedVisualization.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VideoFeed\BitmapHelper.cs" />
+    <Compile Include="VideoFeed\ScreenCapture.cs" />
     <Compile Include="VideoFeed\Webcam.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -159,6 +163,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="pgClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VideoFeedVisualization.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

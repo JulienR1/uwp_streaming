@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Multiclient.VideoFeed;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -6,8 +7,11 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Reflection.PortableExecutable;
+using System.ServiceModel.Dispatcher;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using Windows.Graphics.Imaging;
 using Windows.Media.ClosedCaptioning;
 
 namespace Multiclient.Communication
@@ -17,23 +21,24 @@ namespace Multiclient.Communication
         private NetworkStream stream;
         private string clientID;
 
-        private Queue<string> messagesToSend;
-
         public Client(Action<Object> callback) : base(callback) { }
 
-        public void StartClient(CommunicationState clientCommunicationState)
+        public async void StartClient(CommunicationState clientCommunicationState)
         {
-            messagesToSend = new Queue<string>();
             Connect();
             SendServerCommunicationState(clientCommunicationState);
             SendClientID();
             StartCommunication(clientCommunicationState, null);
+            if (clientCommunicationState != CommunicationState.Reading)
+                await Webcam.Start();
         }
 
         public void CloseClient()
         {
+            inCommunication = false;
             stream?.Dispose();
             stream = null;
+            Webcam.Stop();
         }
 
         private void Connect()
@@ -76,25 +81,22 @@ namespace Multiclient.Communication
             WriteWithHeader(stream, Encoding.ASCII.GetBytes(clientID));
         }
 
-        // Called by pgClient when ENTER is pressed
-        public void SendData(string data)
+        protected async override void ReadData(object data)
         {
-            messagesToSend.Enqueue(data);
-        }
-        
-        protected override void ReadData(object data)
-        {
-            byte[] messageBytes = ReadBytesWithHeader(stream);
-            callback("Serveur: " + Encoding.ASCII.GetString(messageBytes));
+            byte[] imgBytes = ReadBytesWithHeader(stream);
+            SoftwareBitmap bmp = await BitmapHelper.EncodedBytesToBitmapAsync(imgBytes);
+            callback(bmp);
         }
 
-        protected override void WriteData(object data)
+        protected async override void WriteData(object data)
         {
-            if (messagesToSend == null || messagesToSend.Count == 0)
+            SoftwareBitmap bmp = Webcam.CurrentFrame;
+            if (bmp == null)
                 return;
+            
+            byte[] imgBytes = await BitmapHelper.BitmapToEncodedBytesAsync(bmp);           
 
-            string message = messagesToSend.Dequeue();
-            WriteWithHeader(stream, Encoding.ASCII.GetBytes(message));
+            WriteWithHeader(stream, imgBytes);
         }
     }
 }

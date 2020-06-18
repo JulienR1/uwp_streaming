@@ -15,9 +15,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <TextBox Visibility="{Binding InputVisible}" Name="inputField" Grid.Row="0" Padding="10" Margin="30" BorderBrush="#000" BorderThickness="2" HorizontalAlignment="Stretch" Height="40" KeyDown="inputKeyDown"/>
+        <TextBox Visibility="{Binding InputVisible}" Name="inputField" Grid.Row="0" Padding="10" Margin="30" BorderBrush="#000" BorderThickness="2" HorizontalAlignment="Stretch" Height="40"/>
         <Button Visibility="{Binding ReconnectVisible}" Name="reconnectButton" Content="Reconnect" Grid.Row="0" Padding="10" Margin="30" HorizontalAlignment="Center" Height="40" Click="Reconnect"/>
 
-        <TextBox IsReadOnly="True" Name="outputField" Grid.Row="1" Padding="10" Margin="30" BorderBrush="#000" BorderThickness="2" HorizontalAlignment="Stretch"/>
+        <TextBox Visibility="Collapsed" IsReadOnly="True" Name="outputField" Grid.Row="1" Padding="10" Margin="30" BorderBrush="#000" BorderThickness="2" HorizontalAlignment="Stretch"/>
+        <Image Name="receptionImage" Grid.Row="1" Stretch="UniformToFill"/>
     </Grid>
 </Page>

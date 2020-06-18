@@ -17,7 +17,7 @@ namespace Multiclient.VideoFeed
         {
             using (InMemoryRandomAccessStream ms = new InMemoryRandomAccessStream())
             {
-                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegXREncoderId, ms);
+                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, ms);
                 encoder.SetSoftwareBitmap(bmp);
 
                 try
@@ -34,11 +34,13 @@ namespace Multiclient.VideoFeed
 
         public static async Task<SoftwareBitmap> EncodedBytesToBitmapAsync(byte[] bmpBytes)
         {
+            SoftwareBitmap result = null;
             using (IRandomAccessStream ms = bmpBytes.AsBuffer().AsStream().AsRandomAccessStream())
             {
-                BitmapDecoder decoder = await BitmapDecoder.CreateAsync(BitmapDecoder.JpegXRDecoderId, ms);
-                return await decoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
+                BitmapDecoder decoder = await BitmapDecoder.CreateAsync(BitmapDecoder.JpegDecoderId, ms);
+                result = await decoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
             }
+            return result;
         }
     }
 }

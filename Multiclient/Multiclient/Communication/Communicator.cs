@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Multiclient.Communication
     public abstract class Communicator
     {
         protected Action<object> callback;
+        protected bool inCommunication = false;
 
         public Communicator(Action<object> callback)
         {
@@ -20,6 +22,7 @@ namespace Multiclient.Communication
 
         protected void StartCommunication(CommunicationState communicationState, object data)
         {
+            inCommunication = true;
             if (communicationState == CommunicationState.Reading || communicationState == CommunicationState.Both)
             {
                 Process process = new Process() { process = new Action<object>(ReadData), data = data };
@@ -35,7 +38,7 @@ namespace Multiclient.Communication
         private void BeginProcess(object _processData)
         {
             Process processData = (Process)_processData;
-            while (true)
+            while (inCommunication)
             {
                 try
                 {
@@ -48,7 +51,7 @@ namespace Multiclient.Communication
         protected abstract void ReadData(object data);
         protected abstract void WriteData(object data);
 
-        protected int ReadIntFromStream(NetworkStream stream)
+        protected int ReadIntFromStream(NetworkStream stream, object msg = null)
         {
             byte[] buffer = new byte[4];
             stream.Read(buffer, 0, buffer.Length);
@@ -75,7 +78,10 @@ namespace Multiclient.Communication
             {
                 int bytesRead = stream.Read(buffer, totalBytesRead, byteCount - totalBytesRead);
                 totalBytesRead += bytesRead;
+                if (bytesRead == 0)
+                    return null;
             }
+
             return buffer;
         }
 
